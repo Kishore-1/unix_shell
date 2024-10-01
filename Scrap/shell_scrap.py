@@ -6,6 +6,7 @@ import datetime
 
 import socket
 
+
 # change color to red & green
 def print_red(invalid):
     print("\033[31m"+invalid+"\033[0m")
@@ -35,7 +36,7 @@ def list_cd():
     else:
         print("No files exists in the current directory")
 
-# list Directories in current directories
+# list Directories in current path
 def list_dir():
 
     folder_cd = []
@@ -61,7 +62,7 @@ def shell():
     
     clrs()
 
-    while True:
+    while (1==1):
         
         command = input("Kishore_Shell> ")
 
@@ -70,13 +71,13 @@ def shell():
         elif command == "dirs":
             list_dir()
         elif command == "exit":
-            print_exit("Shell exited")
+            print_exit("Shell Exited")
             break
         elif command == "":
             print(command)
         else:
             print_red("\t\t\t**************************** Invalid Command ****************************")
 
-if __name__ == "__main__":
-    shell() 
+shell() # Shell we created
+
 
