@@ -1,0 +1,42 @@
+KISHORE    
+
+---------------------------- Building UNIX like shell using Python----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1. Command Prompt build: create a shell that asks for commands continuously until user exits.
+
+2. Create shell functions which has loop that exits on user Command - exit
+                            shell():            # function shell - terminal creation
+                                while true:
+                                        cmd = input("Kishore_shell>").strip().split()   # user input
+                                        if len(command) == 0:
+                                            continue          # loop continues if theres no command entered
+
+
+
+3. import required libraries - 
+                                1. os - directories,listing files,remove file, pwd
+                                2. datetime -  returns current date & time
+                                3. shutil - copy file 
+                                4. socket - returns n/w info of the system. i.e., IP Address
+
+4. create Command functions:
+            1. list - list files from current directory
+            2. dirs - list only the directories from current directory
+            3. date - display sys date i.e., (15-sep-2002)
+            4. time - display sys time i.e., (HH:MM:SS)
+                        time -hours     -  only hours
+                        time -mins      -  only minutes
+                        time -secs      -  only seconds
+            5. cat <filename>       - display contents of text filename
+            6. head -5 <filename>   - display top 5 lines
+            7. tail -5 <filename>   - display last 5 lines
+            8. copy_file <src> <dest> - copy src file to dest
+            9. remove_file <filename> - delete the file
+           10. empty_file <filename>  - truncate file
+           11. ipconfig  - display sys IP Address
+           12. pwd - present working directory
+           13. clear - clear the screen
+           14. exit  - shell exits 
+
+
+5. Exception handling & constraints
