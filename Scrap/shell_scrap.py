@@ -6,9 +6,11 @@ import datetime
 
 import socket
 
-# change color to red
+# change color to red & green
 def print_red(invalid):
     print("\033[31m"+invalid+"\033[0m")
+def print_exit(exit):
+    print("\033[92m"+exit+"\033[0m")
 
 #clears the screen before shell loop
 def clrs():                 
@@ -33,6 +35,27 @@ def list_cd():
     else:
         print("No files exists in the current directory")
 
+# list Directories in current directories
+def list_dir():
+
+    folder_cd = []
+    b_lst = os.listdir()
+
+        #Loop that gets the files one by one
+    for item in b_lst:
+        #checks the item is file or not
+        if os.path.isdir(item):
+            folder_cd.append(item)
+   
+    #prints file in terminal
+    if folder_cd:
+        for item in folder_cd:
+            print(item)
+    else:
+        print("No folders found in this directory")
+
+
+
 #Unix Like SHELL
 def shell():
     
@@ -44,8 +67,10 @@ def shell():
 
         if command == "list":
             list_cd()
+        elif command == "dirs":
+            list_dir()
         elif command == "exit":
-            print("Shell exited")
+            print_exit("Shell exited")
             break
         elif command == "":
             print(command)
