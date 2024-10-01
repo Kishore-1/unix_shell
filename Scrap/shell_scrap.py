@@ -6,12 +6,12 @@ import datetime
 
 import socket
 
-def list_cd():   
+def list_cd():              
 # list directories
     file_cd = []
     a_lst = os.listdir()    # gets items in current directory
 
-#Loop
+#Loop 
     for item in a_lst:
         if os.path.isfile(item):
             file_cd.append(item)
@@ -23,7 +23,7 @@ def list_cd():
         print("No files exists in the current directory")
 
 def shell():
-    while (1==1):
+    while (1==0):
         command = input("Kishore_Shell> ")
 
         if command == "list":
@@ -33,3 +33,4 @@ def shell():
 
 if __name__ == "__main__":
     shell()
+
