@@ -31,3 +31,5 @@ def shell():
         else:
             print("Invalid command")
 
+if __name__ == "__main__":
+    shell()
