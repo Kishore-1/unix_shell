@@ -17,16 +17,6 @@ def print_exit(exit):
 def clrs():                 
     os.system('cls')
 
-#System Date and Time
-def dte():
-    a=datetime.datetime.now()
-    dt=a.strftime('%d-%b-%Y'),a.strftime('%X')   #in single line
-    # tt=a.strftime('%X')                        #in two line
-    print("Today Date :",dt,)
-    # print("Current Time :",tt)
-dte()
-
-
 # list Files in Current Directory
 def list_cd():              
 
@@ -67,7 +57,14 @@ def list_dir():
 
 # date 
 def dte():
-    print(datetime.datetime.now())
+    # print(datetime.datetime.now())
+    a=datetime.datetime.now()
+    dt=a.strftime('%d-%b-%Y'),a.strftime('%X')   #in single line
+    # tt=a.strftime('%X')                        #in two line
+    print("Today Date :",dt,)
+    # print("Current Time :",tt)
+dte()
+
 
 
 
