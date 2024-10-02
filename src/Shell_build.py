@@ -55,7 +55,7 @@ def list_dir():
         print("No folders found in this directory")
 
 
-# date 
+# date and time
 def dte():
     # print(datetime.datetime.now())
     a=datetime.datetime.now()
