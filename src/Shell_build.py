@@ -54,21 +54,16 @@ def list_dir():
     else:
         print("No folders found in this directory")
 
+# getting current time from datetime 
+curr_dt =  datetime.datetime.now()
 
-# date and time
+# date - strftime used to convert normal date format required str
 def dte():
-    # print(datetime.datetime.now())
-    a=datetime.datetime.now()
-    dt=a.strftime('%d-%b-%Y'),a.strftime('%X')   #in single line
-    # tt=a.strftime('%X')                        #in two line
-    print("Today Date :",dt,)
-    # print("Current Time :",tt)
-dte()
+    return curr_dt.strftime("%d-%b-%Y").lower()    
 
 
 
-
-
+ 
 #Unix Like SHELL
 def shell():
     
@@ -83,7 +78,17 @@ def shell():
         elif command == "dirs":
             list_dir()
         elif command == "date":
-            dte()
+           print(dte())
+        elif command == "time":
+            print(curr_dt.strftime("%H:%M:%S"))
+        elif command == "time -hours":               
+            print(curr_dt.hour)                     #.hour - gets only hour part
+        elif command == "time -mins":               
+            print(curr_dt.minute)                   #.minute - gets only minutes part
+        elif command == "time -secs":               
+            print(curr_dt.second)                   #.second - gets only seconds part
+        
+
         elif command == "exit":
             print_exit("Shell Exited")
             break
