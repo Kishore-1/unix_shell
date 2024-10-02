@@ -61,8 +61,16 @@ curr_dt =  datetime.datetime.now()
 def dte():
     return curr_dt.strftime("%d-%b-%Y").lower()    
 
+# # cat <filename>
+# def content(filename):
+#     if os.path.isfile(filename):
+#         f1 = open(filename,"r") 
+#         print(f1.read())
+#         f1.close()
+#     else:
+#         print("No File Found")
+    
 
- 
 #Unix Like SHELL
 def shell():
     
@@ -80,13 +88,16 @@ def shell():
            print(dte())
         elif command == "time":
             print(curr_dt.strftime("%H:%M:%S"))
+            # print(curr_dt.hour,":",curr_dt.minute,":",curr_dt.second)
         elif command == "time -hours":               
             print(curr_dt.hour)                     #.hour - gets only hour part
         elif command == "time -mins":               
             print(curr_dt.minute)                   #.minute - gets only minutes part
         elif command == "time -secs":               
             print(curr_dt.second)                   #.second - gets only seconds part
-        
+        # elif command == "cat",:
+        #     a = command.split("cat")
+        #     content(a)
 
         elif command == "exit":
             print_exit("Shell Exited")
