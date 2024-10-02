@@ -59,10 +59,10 @@ def list_dir():
 def dte():
     # print(datetime.datetime.now())
     a=datetime.datetime.now()
-    dt=a.strftime('%d-%b-%Y'),a.strftime('%X')   #in single line
-    # tt=a.strftime('%X')                        #in two line
+    dt=a.strftime('%d-%b-%Y') #,a.strftime('%X')#in single line
+    tt=a.strftime('%X')                        #in two line
     print("Today Date :",dt,)
-    # print("Current Time :",tt)
+    print("Current Time :",tt)
 dte()
 
 
