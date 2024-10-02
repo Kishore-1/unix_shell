@@ -58,7 +58,8 @@ def list_dir():
 
 # date 
 def dte():
-    print(datetime.datetime.now())
+    a = (datetime.datetime.now() ).date()   #gets sys current time            #date() func gets date part
+    print (a)
 
 
 
