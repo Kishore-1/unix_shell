@@ -57,11 +57,11 @@ def list_dir():
 # getting current time from datetime 
 curr_dt =  datetime.datetime.now()
 
-# date - strftime used to convert normal date format required str
+# date - strftime used to convert normal date format to required str
 def dte():
     return curr_dt.strftime("%d-%b-%Y").lower()    
 
-# cat <filename> displays content
+# cat <filename> displays file content
 def content(filename):
     if os.path.isfile(filename):
         f1 = open(filename,"r") 
@@ -147,7 +147,6 @@ def shell():
         elif command == "exit":
             print_exit("Shell Exited")
             break
-
         elif command == "":
             print(command)
         else:
