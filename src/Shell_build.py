@@ -17,7 +17,6 @@ def print_exit(exit):
 def clrs():                 
     os.system('cls')
 
-
 # list Files in Current Directory
 def list_cd():              
 
@@ -56,10 +55,16 @@ def list_dir():
         print("No folders found in this directory")
 
 
-# date 
+# date and time
 def dte():
-    a = (datetime.datetime.now() ).date()   #gets sys current time            #date() func gets date part
-    print (a)
+    # print(datetime.datetime.now())
+    a=datetime.datetime.now()
+    dt=a.strftime('%d-%b-%Y'),a.strftime('%X')   #in single line
+    # tt=a.strftime('%X')                        #in two line
+    print("Today Date :",dt,)
+    # print("Current Time :",tt)
+dte()
+
 
 
 
