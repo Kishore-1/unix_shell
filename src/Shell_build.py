@@ -61,6 +61,7 @@ curr_dt =  datetime.datetime.now()
 def dte():
     return curr_dt.strftime("%d-%b-%Y").lower()    
 
+# cat <filename> displays content
 def content(filename):
     if os.path.isfile(filename):
         f1 = open(filename,"r") 
@@ -69,7 +70,15 @@ def content(filename):
     else:
         print_red("Invalid File name or File not Exists")
 
-
+#head
+def head(fname):
+    if os.path.isfile(fname):
+        f1 = open(fname,"r") 
+        f2=f1.readlines()
+        print(f2[:6])
+        f1.close()
+    else:
+        print_red("Invalid File name or File not Exists")
 
 #Unix Like SHELL
 def shell():
@@ -85,7 +94,7 @@ def shell():
         elif command == "dirs":
             list_dir()
         elif command == "date":
-           print(dte())
+            print(dte())
         elif command == "time":
             print(curr_dt.strftime("%H:%M:%S"))
             # print(curr_dt.hour,":",curr_dt.minute,":",curr_dt.second)
@@ -97,12 +106,15 @@ def shell():
             print(curr_dt.second)                   #.second - gets only seconds part
         elif command[:3] == "cat":
             filename = command[4:]
-            content(filename)
+        elif command[:7] == "head -5":
+            fname = command[8:]
+            head(fname)
         elif command == "clear":
             clrs()
         elif command == "exit":
             print_exit("Shell Exited")
             break
+
         elif command == "":
             print(command)
         else:
