@@ -33,7 +33,7 @@ def list_cd():
         for item in file_cd:
             print(item)
     else:
-        print("No files exists in the current directory")
+        print_red("No files exists in the current directory")
 
 # list Directories in current path
 def list_dir():
@@ -52,7 +52,7 @@ def list_dir():
         for item in folder_cd:
             print(item)
     else:
-        print("No folders found in this directory")
+        print_red("No folders found in this directory")
 
 # getting current time from datetime 
 curr_dt =  datetime.datetime.now()
@@ -61,15 +61,15 @@ curr_dt =  datetime.datetime.now()
 def dte():
     return curr_dt.strftime("%d-%b-%Y").lower()    
 
-# # cat <filename>
-# def content(filename):
-#     if os.path.isfile(filename):
-#         f1 = open(filename,"r") 
-#         print(f1.read())
-#         f1.close()
-#     else:
-#         print("No File Found")
-    
+def content(filename):
+    if os.path.isfile(filename):
+        f1 = open(filename,"r") 
+        print(f1.read())
+        f1.close()
+    else:
+        print_red("Invalid File name or File not Exists")
+
+
 
 #Unix Like SHELL
 def shell():
@@ -95,10 +95,11 @@ def shell():
             print(curr_dt.minute)                   #.minute - gets only minutes part
         elif command == "time -secs":               
             print(curr_dt.second)                   #.second - gets only seconds part
-        # elif command == "cat",:
-        #     a = command.split("cat")
-        #     content(a)
-
+        elif command[:3] == "cat":
+            filename = command[4:]
+            content(filename)
+        elif command == "clear":
+            clrs()
         elif command == "exit":
             print_exit("Shell Exited")
             break
