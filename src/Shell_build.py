@@ -107,7 +107,7 @@ def shell():
 
     while (1==1):
         
-        command = input("Kishore_Shell> ")
+        command = input("Kishore_Shell> ").strip()
 
         if command == "list":
             list_cd()
@@ -130,25 +130,25 @@ def shell():
             print(curr_dt.second)                   #.second - gets only seconds part
 
         elif command[:3] == "cat":
-            filename = command[4:]
+            filename = command.split()[1]
+            content(filename)
+            # filename = command[4:]
 
         elif command[:4] == "head":
-            command = command.strip()
             hl,hrange,hname = command.split()
             head(hname,int(hrange))
 
         elif command[:4] == "tail":
-            command = command.strip()
-            tl,trange,tname = command.split()
+            trange,tname = command.split()[1:]
             tail(tname,int(trange))      
 
         elif command == "clear":
             clrs()
+        elif command == "":
+            print(command)
         elif command == "exit":
             print_exit("Shell Exited")
             break
-        elif command == "":
-            print(command)
         else:
             print_red("\t\t\t**************************** Invalid Command ****************************")
 
