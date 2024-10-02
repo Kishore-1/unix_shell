@@ -62,7 +62,6 @@ def dte():
     return curr_dt.strftime("%d-%b-%Y").lower()    
 
 
-
  
 #Unix Like SHELL
 def shell():
