@@ -1,19 +1,24 @@
 import os
 
-def content(filename):
-    if os.path.isfile(filename):
-        f1 = open(filename,"r") 
-        print(f1.read())
-        f1.close()
 
-# content("File1")
-# content(r"C:\Users\kimuruga\Desktop\pro_shell\film.txt")
 
-command = input().strip()
-# print(command[0:3],command[3:])
-if command[:3] == "cat":
-    filename = command[4:]
-    content(filename)
-else:
-    print("invalid file Name")
+def tail(path,tindex):
+    if os.path.isfile(path):
+        t1 = open(path,"r") 
+        t2=t1.readlines()
+        range = t2[tindex:]
+        print(range)
+        t1.close()
+
+    else:
+
+        print("Invalid File name or File does not exist")
+
+
+command = input("enter> ").strip()
+if command[:4] == "tail":
+    nm,trange,path = command.split()
+    tindex=int(trange)
+    tail(path,tindex)
+
 

@@ -70,15 +70,35 @@ def content(filename):
     else:
         print_red("Invalid File name or File not Exists")
 
-#head
-def head(fname):
-    if os.path.isfile(fname):
-        f1 = open(fname,"r") 
-        f2=f1.readlines()
-        print(f2[:5])
-        f1.close()
+#head returns first part
+def head(hname,hindex):
+    if os.path.isfile(hname):
+        h1 = open(hname,"r") 
+        h2=h1.readlines()
+        if hindex>len(h2):
+            print_red("Line Count exceeds")
+        elif hindex<0:
+            print(h2[:-hindex])
+        else:
+            print(h2[:hindex])
+        h1.close()
     else:
         print_red("Invalid File name or File not Exists")
+
+#tail returns last part
+def tail(tname,tindex):
+    if os.path.isfile(tname):
+        t1 = open(tname,"r") 
+        t2=t1.readlines()
+        if tindex>len(t2):
+            print_red("Line Count exceeds")
+        elif tindex<0:
+            print(t2[tindex:])
+        else:
+            print(t2[-tindex:])
+        t1.close()
+    else:
+        print_red("Invalid File name or File does not exist")
 
 #Unix Like SHELL
 def shell():
@@ -91,24 +111,37 @@ def shell():
 
         if command == "list":
             list_cd()
+
         elif command == "dirs":
             list_dir()
+
         elif command == "date":
             print(dte())
+
         elif command == "time":
             print(curr_dt.strftime("%H:%M:%S"))
             # print(curr_dt.hour,":",curr_dt.minute,":",curr_dt.second)
+            
         elif command == "time -hours":               
             print(curr_dt.hour)                     #.hour - gets only hour part
         elif command == "time -mins":               
             print(curr_dt.minute)                   #.minute - gets only minutes part
         elif command == "time -secs":               
             print(curr_dt.second)                   #.second - gets only seconds part
+
         elif command[:3] == "cat":
             filename = command[4:]
-        elif command[:7] == "head -5":
-            fname = command[8:].strip()
-            head(fname)
+
+        elif command[:4] == "head":
+            command = command.strip()
+            hl,hrange,hname = command.split()
+            head(hname,int(hrange))
+
+        elif command[:4] == "tail":
+            command = command.strip()
+            tl,trange,tname = command.split()
+            tail(tname,int(trange))      
+
         elif command == "clear":
             clrs()
         elif command == "exit":
@@ -122,4 +155,4 @@ def shell():
 
 shell() # Shell we created
 
-
+               
