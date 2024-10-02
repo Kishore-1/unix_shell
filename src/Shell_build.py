@@ -75,7 +75,7 @@ def head(fname):
     if os.path.isfile(fname):
         f1 = open(fname,"r") 
         f2=f1.readlines()
-        print(f2[:6])
+        print(f2[:5])
         f1.close()
     else:
         print_red("Invalid File name or File not Exists")
@@ -107,7 +107,7 @@ def shell():
         elif command[:3] == "cat":
             filename = command[4:]
         elif command[:7] == "head -5":
-            fname = command[8:]
+            fname = command[8:].strip()
             head(fname)
         elif command == "clear":
             clrs()
