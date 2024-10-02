@@ -11,7 +11,7 @@ KISHORE
                                 4. socket - returns n/w info of the system. i.e., IP Address
 
 3. create Command functions:
-            1. list - list files from current directory - os.listdr()
+            1. list - list files from current directory - os.listdr(),isFile()
             2. dirs - list only the directories from current directory
             3. date - display sys date i.e., (15-sep-2002)
             4. time - display sys time i.e., (HH:MM:SS)

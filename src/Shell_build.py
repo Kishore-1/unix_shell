@@ -56,6 +56,12 @@ def list_dir():
         print("No folders found in this directory")
 
 
+# date 
+def dte():
+    print(datetime.datetime.now())
+
+
+
 
 #Unix Like SHELL
 def shell():
@@ -70,6 +76,8 @@ def shell():
             list_cd()
         elif command == "dirs":
             list_dir()
+        elif command == "date":
+            dte()
         elif command == "exit":
             print_exit("Shell Exited")
             break
