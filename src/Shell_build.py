@@ -109,6 +109,15 @@ def tail(tname,tindex):
 def pw_dir():
     print_ylw("Path:      \n", os.getcwd())
 
+# IPconfig
+def ip():
+    host_name = socket.gethostname()
+    ipaddr = socket.gethostbyname(host_name)
+    print("\nIPv4 Address. . . . . . . . . . . : ",ipaddr,"\n")
+
+# Remove File
+def rmv(f_path):
+    print(f_path)
 
 #Unix Like SHELL
 def shell():
@@ -151,9 +160,17 @@ def shell():
         elif command[:4] == "tail":
             trange,tname = command.split()[1:]
             tail(tname,int(trange))    
+        
+        elif command[:11] == "remove_file":
+            f_path = command.split()[1]
+            print(f_path)
+
 
         elif command == "pwd":
             pw_dir()  
+        
+        elif command == "ipconfig":
+            ip()
 
         elif command == "clear":
             clrs()
