@@ -134,8 +134,14 @@ def trun(e_path):
         print("Emptied the given file")
     else:
         print_red("File not found")
-    
 
+#copy file
+def cpy(c_src,c_dst):
+    if os.path.isfile(c_src):
+        shutil.copy(c_src,c_dst)
+        print("File Copied")
+    else:
+        print("File not found")
 
 #Unix Like SHELL
 def shell():
@@ -186,6 +192,10 @@ def shell():
         elif command[:10] == "empty_file":
             e_path = command.split()[1]
             trun(e_path)
+        elif command[:9] == "copy_file":
+            c_src = command.split()[1]
+            c_dst = command.split()[2]
+            cpy(c_src,c_dst)
 
         elif command == "pwd":
             pw_dir()  
