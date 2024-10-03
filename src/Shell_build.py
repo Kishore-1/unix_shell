@@ -152,63 +152,65 @@ def shell():
         
         command = input("Kishore_Shell> ").strip()
 
-        if command == "list":
-            list_cd()
+        if command == "list":                           
+            list_cd()                               # List files
 
         elif command == "dirs":
-            list_dir()
+            list_dir()                              # List directories
 
         elif command == "date":
-            print(dte())
+            print(dte())                            # Shows date
 
         elif command == "time":
-            print(curr_dt.strftime("%H:%M:%S"))
+            print(curr_dt.strftime("%H:%M:%S"))     # Shows time
             # print(curr_dt.hour,":",curr_dt.minute,":",curr_dt.second)
             
-        elif command == "time -hours":               
+        elif command == "time -hours":              
             print(curr_dt.hour)                     #.hour - gets only hour part
         elif command == "time -mins":               
             print(curr_dt.minute)                   #.minute - gets only minutes part
         elif command == "time -secs":               
             print(curr_dt.second)                   #.second - gets only seconds part
 
-        elif command[:3] == "cat":
+        elif command[:3] == "cat":                  # cat shows file content
             filename = command.split()[1]
             content(filename)
             # filename = command[4:]
 
-        elif command[:4] == "head":
+        elif command[:4] == "head":                 # head shows top lines
             hl,hrange,hname = command.split()
             head(hname,int(hrange))
 
-        elif command[:4] == "tail":
+        elif command[:4] == "tail":                 # tail shows bottom lines
             trange,tname = command.split()[1:]
             tail(tname,int(trange))    
         
-        elif command[:11] == "remove_file":
+        elif command[:11] == "remove_file":         # removes file 
             f_path = command.split()[1]
             rmv(f_path)
         
-        elif command[:10] == "empty_file":
+        elif command[:10] == "empty_file":          # truncates file
             e_path = command.split()[1]
             trun(e_path)
-        elif command[:9] == "copy_file":
+
+        elif command[:9] == "copy_file":            # copies file 
             c_src = command.split()[1]
             c_dst = command.split()[2]
             cpy(c_src,c_dst)
 
-        elif command == "pwd":
+        elif command == "pwd":                     # present working directory get_cwd
             pw_dir()  
         
-        elif command == "ipconfig":
+        elif command == "ipconfig":                # shows ip address
             ip()
 
-        elif command == "clear":
+        elif command == "clear":                   # clear screen
             clrs()
         elif command == "":
-            print(command)
+            print(command)                         # loops again asking for shell command
+
         elif command == "exit":
-            print_exit("Shell Exited")
+            print_exit("Shell Exited")             # exits shell 
             break
         else:
             print_red("\t\t\t**************************** Invalid Command ****************************")
