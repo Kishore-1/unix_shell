@@ -1,0 +1,2 @@
+1. To make Clear command to work make sure to install click library
+        pip install click

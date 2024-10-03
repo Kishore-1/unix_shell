@@ -6,16 +6,20 @@ import datetime
 
 import socket
 
+import click      #install click library
 
-# change color to red & green
+# change color to Red,Yellow,Green
 def print_red(invalid):
     print("\033[31m"+invalid+"\033[0m")
+def print_ylw(pth,cwdir):
+    print("\033[93m"+cwdir+"\033[0m")
 def print_exit(exit):
     print("\033[92m"+exit+"\033[0m")
 
 #clears the screen before shell loop
 def clrs():                 
-    os.system('cls')
+    click.clear()   # clear of function clears the screen 
+
 
 # list Files in Current Directory
 def list_cd():              
@@ -70,7 +74,7 @@ def content(filename):
     else:
         print_red("Invalid File name or File not Exists")
 
-#head returns first part
+# head returns first part
 def head(hname,hindex):
     if os.path.isfile(hname):
         h1 = open(hname,"r") 
@@ -85,7 +89,7 @@ def head(hname,hindex):
     else:
         print_red("Invalid File name or File not Exists")
 
-#tail returns last part
+# tail returns last part
 def tail(tname,tindex):
     if os.path.isfile(tname):
         t1 = open(tname,"r") 
@@ -99,6 +103,12 @@ def tail(tname,tindex):
         t1.close()
     else:
         print_red("Invalid File name or File does not exist")
+
+# pwd - Present Working Directory
+
+def pw_dir():
+    print_ylw("Path:      \n", os.getcwd())
+
 
 #Unix Like SHELL
 def shell():
@@ -140,7 +150,10 @@ def shell():
 
         elif command[:4] == "tail":
             trange,tname = command.split()[1:]
-            tail(tname,int(trange))      
+            tail(tname,int(trange))    
+
+        elif command == "pwd":
+            pw_dir()  
 
         elif command == "clear":
             clrs()
