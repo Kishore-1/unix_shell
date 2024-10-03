@@ -1,13 +1,9 @@
 # Project-02 #  KISHORE-GEERVANI - Build Unix like shell using python ##
 
 import os
-
 import shutil
-
 import datetime
-
 import socket
-
 import click      #install click library
 
 # change color to Red,Yellow,Green
@@ -22,15 +18,14 @@ def print_exit(green):
 def clrs():                 
     click.clear()   # clear of function clears the screen 
 
-
 # list Files in Current Directory
-def list_cd():              
+def list_file():              
 
     file_cd = []
-    a_lst = os.listdir()    # gets items in current directory
+    file_lst = os.listdir()    # gets items in current directory
 
     #Loop that gets the files one by one
-    for item in a_lst:
+    for item in file_lst:
         #checks the item is file or not
         if os.path.isfile(item):
             file_cd.append(item)
@@ -45,10 +40,10 @@ def list_cd():
 def list_dir():
 
     folder_cd = []
-    b_lst = os.listdir()
+    dir_lst = os.listdir()
 
         #Loop that gets the files one by one
-    for item in b_lst:
+    for item in dir_lst:
         #checks the item is file or not
         if os.path.isdir(item):
             folder_cd.append(item)
@@ -76,7 +71,7 @@ def content(filename):
     else:
         print_red("Invalid File name or File not Exists")
 
-# head returns first part
+# head -(length) filename     returns from top part  of the file
 def head(hname,hindex):   
     if os.path.isfile(hname):
         h1 = open(hname,"r") 
@@ -91,7 +86,7 @@ def head(hname,hindex):
     else:
         print_red("Invalid File name or File not Exists")
 
-# tail returns last part
+# tail -(length) filename     returns from bottom part  of the file
 def tail(tname,tindex): 
     if os.path.isfile(tname):
         t1 = open(tname,"r") 
@@ -110,13 +105,11 @@ def tail(tname,tindex):
 def pw_dir():
     print_ylw("Path:      \n", os.getcwd())
 
-
 # IPconfig
 def ip():
     host_name = socket.gethostname()
     ipaddr = socket.gethostbyname(host_name)
     print("\nIPv4 Address. . . . . . . . . . . : ",ipaddr,"\n")
-
 
 # Remove File
 def rmv(f_path):
@@ -147,14 +140,14 @@ def cpy(c_src,c_dst):
 #Unix Like SHELL
 def shell():
     
-    clrs()
+    clrs() # Auto clears screen every First time program runs
 
     while (1==1):
         try:
             command = input("Kishore_Shell> ").strip()
 
             if command == "list":                           
-                list_cd()                               # List files
+                list_file()                             # List files
 
             elif command == "dirs":
                 list_dir()                              # List directories
@@ -225,16 +218,20 @@ def shell():
             elif command == "clear":                   # clear screen
                 clrs()
             elif command == "":
-                print(command)                         # loops again asking for shell command
+                print(command)                         # loops again to get shell command
 
             elif command == "exit":
                 print_exit("Shell Exited")             # exits shell 
                 break
             else:
                 print_red("\t\t\t**************************** Invalid Command ****************************")
+
         except Exception as e:
             print(f"unexpected Error: {e}")
 
 shell() # Shell created
+
+
+###################### THANK YOU !!! ############################################ THANK YOU !!! ############################################ THANK YOU !!! ######################
 
                
