@@ -117,7 +117,11 @@ def ip():
 
 # Remove File
 def rmv(f_path):
-    print(f_path)
+    if os.path.isfile(f_path):
+        os.remove(f_path)
+        print("File removed Succesfully")
+    else:
+        print_red("File not found")
 
 #Unix Like SHELL
 def shell():
@@ -163,8 +167,7 @@ def shell():
         
         elif command[:11] == "remove_file":
             f_path = command.split()[1]
-            print(f_path)
-
+            rmv(f_path)
 
         elif command == "pwd":
             pw_dir()  
