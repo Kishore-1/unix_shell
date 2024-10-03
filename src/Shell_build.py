@@ -181,7 +181,7 @@ def shell():
                     print_red("invalid command missing length or path")
 
             elif command[:4] == "head":                 # head shows top lines
-                if (len(command.split()) == 3) & (command[1] == int): 
+                if (len(command.split()) == 3):
                     hrange,hname = command.split()[1:]
                     head(hname,int(hrange))
                 else:
@@ -232,12 +232,8 @@ def shell():
                 break
             else:
                 print_red("\t\t\t**************************** Invalid Command ****************************")
-        except ValueError:
-            print_red("invalid input for this command")
-        except IndexError:
-            print_red("Missing required arguments")
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"unexpected Error: {e}")
 
 shell() # Shell we created
 
