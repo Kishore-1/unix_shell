@@ -123,6 +123,20 @@ def rmv(f_path):
     else:
         print_red("File not found")
 
+
+
+# Truncate file
+def trun(e_path):
+    if os.path.isfile(e_path): 
+        e1 = open(e_path,"w")
+        e1.truncate()
+        e1.close()
+        print("Emptied the given file")
+    else:
+        print_red("File not found")
+    
+
+
 #Unix Like SHELL
 def shell():
     
@@ -168,6 +182,10 @@ def shell():
         elif command[:11] == "remove_file":
             f_path = command.split()[1]
             rmv(f_path)
+        
+        elif command[:10] == "empty_file":
+            e_path = command.split()[1]
+            trun(e_path)
 
         elif command == "pwd":
             pw_dir()  
