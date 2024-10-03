@@ -1,4 +1,4 @@
-##  KISHORE-GEERVANI - Build Unix like shell using python ##
+# Project-02 #  KISHORE-GEERVANI - Build Unix like shell using python ##
 
 import os
 
@@ -235,6 +235,6 @@ def shell():
         except Exception as e:
             print(f"unexpected Error: {e}")
 
-shell() # Shell we created
+shell() # Shell created
 
                
