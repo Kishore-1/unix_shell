@@ -141,7 +141,7 @@ def cpy(c_src,c_dst):
         shutil.copy(c_src,c_dst)
         print("File Copied")
     else:
-        print_red("File not found")
+        print("File not found")
 
 #Unix Like SHELL
 def shell():
