@@ -1,3 +1,5 @@
+##  KISHORE-GEERVANI - Build Unix like shell using python ##
+
 import os
 
 import shutil
@@ -9,12 +11,12 @@ import socket
 import click      #install click library
 
 # change color to Red,Yellow,Green
-def print_red(invalid):
-    print("\033[31m"+invalid+"\033[0m")
-def print_ylw(pth,cwdir):
-    print("\033[93m"+cwdir+"\033[0m")
-def print_exit(exit):
-    print("\033[92m"+exit+"\033[0m")
+def print_red(red):
+    print("\033[31m"+red+"\033[0m")
+def print_ylw(pth,ylw):
+    print("\033[93m"+ylw+"\033[0m")
+def print_exit(green):
+    print("\033[92m"+green+"\033[0m")
 
 #clears the screen before shell loop
 def clrs():                 
@@ -75,12 +77,12 @@ def content(filename):
         print_red("Invalid File name or File not Exists")
 
 # head returns first part
-def head(hname,hindex):
+def head(hname,hindex):   
     if os.path.isfile(hname):
         h1 = open(hname,"r") 
         h2=h1.readlines()
         if hindex>len(h2):
-            print_red("Line Count exceeds")
+            print_red("Line Count exceeds than in file")
         elif hindex<0:
             print(h2[:-hindex])
         else:
@@ -90,12 +92,12 @@ def head(hname,hindex):
         print_red("Invalid File name or File not Exists")
 
 # tail returns last part
-def tail(tname,tindex):
+def tail(tname,tindex): 
     if os.path.isfile(tname):
         t1 = open(tname,"r") 
         t2=t1.readlines()
         if tindex>len(t2):
-            print_red("Line Count exceeds")
+            print_red("Line Count exceeds than in file")
         elif tindex<0:
             print(t2[tindex:])
         else:
@@ -105,15 +107,16 @@ def tail(tname,tindex):
         print_red("Invalid File name or File does not exist")
 
 # pwd - Present Working Directory
-
 def pw_dir():
     print_ylw("Path:      \n", os.getcwd())
+
 
 # IPconfig
 def ip():
     host_name = socket.gethostname()
     ipaddr = socket.gethostbyname(host_name)
     print("\nIPv4 Address. . . . . . . . . . . : ",ipaddr,"\n")
+
 
 # Remove File
 def rmv(f_path):
@@ -123,20 +126,18 @@ def rmv(f_path):
     else:
         print_red("File not found")
 
-
-
 # Truncate file
 def trun(e_path):
     if os.path.isfile(e_path): 
         e1 = open(e_path,"w")
         e1.truncate()
         e1.close()
-        print("Emptied the given file")
+        print("File emptied")
     else:
         print_red("File not found")
 
 #copy file
-def cpy(c_src,c_dst):
+def cpy(c_src,c_dst):   
     if os.path.isfile(c_src):
         shutil.copy(c_src,c_dst)
         print("File Copied")
@@ -149,71 +150,94 @@ def shell():
     clrs()
 
     while (1==1):
-        
-        command = input("Kishore_Shell> ").strip()
+        try:
+            command = input("Kishore_Shell> ").strip()
 
-        if command == "list":                           
-            list_cd()                               # List files
+            if command == "list":                           
+                list_cd()                               # List files
 
-        elif command == "dirs":
-            list_dir()                              # List directories
+            elif command == "dirs":
+                list_dir()                              # List directories
 
-        elif command == "date":
-            print(dte())                            # Shows date
+            elif command == "date":
+                print(dte())                            # Shows date
 
-        elif command == "time":
-            print(curr_dt.strftime("%H:%M:%S"))     # Shows time
-            # print(curr_dt.hour,":",curr_dt.minute,":",curr_dt.second)
-            
-        elif command == "time -hours":              
-            print(curr_dt.hour)                     #.hour - gets only hour part
-        elif command == "time -mins":               
-            print(curr_dt.minute)                   #.minute - gets only minutes part
-        elif command == "time -secs":               
-            print(curr_dt.second)                   #.second - gets only seconds part
+            elif command == "time":
+                print(curr_dt.strftime("%H:%M:%S"))     # Shows time
+                # print(curr_dt.hour,":",curr_dt.minute,":",curr_dt.second)
 
-        elif command[:3] == "cat":                  # cat shows file content
-            filename = command.split()[1]
-            content(filename)
-            # filename = command[4:]
+            elif command == "time -hours":              
+                print(curr_dt.hour)                     #.hour - gets only hour part
+            elif command == "time -mins":               
+                print(curr_dt.minute)                   #.minute - gets only minutes part
+            elif command == "time -secs":               
+                print(curr_dt.second)                   #.second - gets only seconds part
 
-        elif command[:4] == "head":                 # head shows top lines
-            hl,hrange,hname = command.split()
-            head(hname,int(hrange))
+            elif command[:3] == "cat":                  # cat shows file content
+                if len(command.split()) == 2:
+                    filename = command.split()[1]
+                    content(filename)
+                else:
+                    print_red("invalid command missing length or path")
 
-        elif command[:4] == "tail":                 # tail shows bottom lines
-            trange,tname = command.split()[1:]
-            tail(tname,int(trange))    
-        
-        elif command[:11] == "remove_file":         # removes file 
-            f_path = command.split()[1]
-            rmv(f_path)
-        
-        elif command[:10] == "empty_file":          # truncates file
-            e_path = command.split()[1]
-            trun(e_path)
+            elif command[:4] == "head":                 # head shows top lines
+                if (len(command.split()) == 3) & (command[1] == int): 
+                    hrange,hname = command.split()[1:]
+                    head(hname,int(hrange))
+                else:
+                    print_red("invalid command missing length or path")
 
-        elif command[:9] == "copy_file":            # copies file 
-            c_src = command.split()[1]
-            c_dst = command.split()[2]
-            cpy(c_src,c_dst)
+            elif command[:4] == "tail":   
+                if len(command.split()) == 3:              # tail shows bottom lines
+                    trange,tname = command.split()[1:]
+                    tail(tname,int(trange)) 
+                else:
+                    print_red("invalid command missing length or path")
 
-        elif command == "pwd":                     # present working directory get_cwd
-            pw_dir()  
-        
-        elif command == "ipconfig":                # shows ip address
-            ip()
+            elif command[:11] == "remove_file":         # removes file 
+                if len(command.split()) == 2:
+                    f_path = command.split()[1]
+                    rmv(f_path)
+                else:
+                    print_red("invalid command - missing path/Filename")
 
-        elif command == "clear":                   # clear screen
-            clrs()
-        elif command == "":
-            print(command)                         # loops again asking for shell command
+            elif command[:10] == "empty_file":          # truncates file
+                if len(command.split()) == 2:
+                    e_path = command.split()[1]
+                    trun(e_path)
+                else:
+                    print_red("invalid command - missing path/Filename")
 
-        elif command == "exit":
-            print_exit("Shell Exited")             # exits shell 
-            break
-        else:
-            print_red("\t\t\t**************************** Invalid Command ****************************")
+            elif command[:9] == "copy_file":            # copies file 
+                if len(command.split()) == 3:
+                    c_src = command.split()[1]
+                    c_dst = command.split()[2]
+                    cpy(c_src,c_dst)
+                else:
+                    print_red("invalid command - missing src/dest")
+
+            elif command == "pwd":                     # present working directory get_cwd
+                pw_dir()  
+
+            elif command == "ipconfig":                # shows ip address
+                ip()
+
+            elif command == "clear":                   # clear screen
+                clrs()
+            elif command == "":
+                print(command)                         # loops again asking for shell command
+
+            elif command == "exit":
+                print_exit("Shell Exited")             # exits shell 
+                break
+            else:
+                print_red("\t\t\t**************************** Invalid Command ****************************")
+        except ValueError:
+            print_red("invalid input for this command")
+        except IndexError:
+            print_red("Missing required arguments")
+        except Exception as e:
+            print(f"Error: {e}")
 
 shell() # Shell we created
 

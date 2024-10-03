@@ -38,4 +38,7 @@ KISHORE
                                         if len(command) == 0:
                                             continue          # loop continues if theres no command entered
 
-5. Exception handling & constraints  - (in process)
+5. Exception handling & constraints  - 
+
+cat <filename>  - IndexError - cat<filename>
+                - 
