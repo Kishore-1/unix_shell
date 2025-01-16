@@ -1,8 +1,8 @@
 # Project-02 #  KISHORE-GEERVANI - Build Unix like shell using python ##
 
-import os    
+import os
 import shutil
-import datetime   #adds datetime operations
+import datetime
 import socket
 import click      #install click library
 
